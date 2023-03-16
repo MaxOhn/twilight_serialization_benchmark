@@ -137,7 +137,9 @@ function buildTables(results, dataset, columns, footnote) {
 const DATASET_DESCRIPTIONS = {
   log: 'This data set is composed of HTTP request logs that are small and contain many strings.',
   mesh: 'This data set is a single mesh. The mesh contains an array of triangles, each of which has three vertices and a normal vector.',
-  minecraft_savedata: 'This data set is composed of Minecraft player saves that contain highly structured data.'
+  minecraft_savedata: 'This data set is composed of Minecraft player saves that contain highly structured data.',
+  twilight_guilds: 'This data set is composed of twilight guilds which resemble huge data types.',
+  twilight_messages: 'This data set is composed of twilight messages representing potentially nested types.'
 }
 
 function format(input) {

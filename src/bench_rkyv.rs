@@ -21,10 +21,10 @@ pub type BenchSerializer<'a> = CompositeSerializer<
 pub fn bench<T, R, U>(name: &'static str, c: &mut Criterion, data: &T, read: R, update: U)
 where
     T: Archive + for<'a> Serialize<BenchSerializer<'a>>,
-    T::Archived: for<'a> CheckBytes<DefaultValidator<'a>> + Deserialize<T, Infallible>,
+    T::Archived: Deserialize<T, Infallible>,
+    T::Archived: for<'a> CheckBytes<DefaultValidator<'a>>,
     R: Fn(&T::Archived),
     U: Fn(Pin<&mut T::Archived>),
-    <T as Archive>::Archived: for<'a> rkyv::CheckBytes<DefaultValidator<'a>>,
 {
     const BUFFER_LEN: usize = 10_000_000;
     const SCRATCH_LEN: usize = 512_000;

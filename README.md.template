@@ -1,14 +1,7 @@
 # Rust serialization benchmark
 
-The goal of these benchmarks is to provide thorough and complete benchmarks for various rust
-serialization frameworks.
-
-## These benchmarks are a work in progress
-
-These benchmarks are still being developed and pull requests to improve benchmarks are welcome.
-
-You can use [this horrible tiny webpage](https://davidkoloski.me/rust_serialization_benchmark) to
-turn a benchmark log into nicely-formatted markdown tables.
+A fork of djkoloski's [rust_serialization_benchmark](https://github.com/djkoloski/rust_serialization_benchmark).
+The goal of these benchmarks is to provide benchmarks for various rust serialization frameworks on [twilight](https://github.com/twilight-rs/twilight) types.
 
 ## Format
 
