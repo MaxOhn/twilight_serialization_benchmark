@@ -135,11 +135,11 @@ function buildTables(results, dataset, columns, footnote) {
 }
 
 const DATASET_DESCRIPTIONS = {
-  log: 'This data set is composed of HTTP request logs that are small and contain many strings.',
-  mesh: 'This data set is a single mesh. The mesh contains an array of triangles, each of which has three vertices and a normal vector.',
-  minecraft_savedata: 'This data set is composed of Minecraft player saves that contain highly structured data.',
-  twilight_guilds: 'This data set is composed of twilight guilds which resemble huge data types.',
-  twilight_messages: 'This data set is composed of twilight messages representing potentially nested types.'
+  guilds: '24-ish [guilds](https://github.com/twilight-rs/twilight/blob/bb8f8f41251e99f4475f5a6757e5a0f84205a83c/twilight-model/src/guild/mod.rs#L78) (huge type, contains everything but messages)',
+  messages: '500-ish [messages](https://github.com/twilight-rs/twilight/blob/bb8f8f41251e99f4475f5a6757e5a0f84205a83c/twilight-model/src/channel/message/mod.rs#L52) (without components)',
+  channels: '750-ish [channels](https://github.com/twilight-rs/twilight/blob/bb8f8f41251e99f4475f5a6757e5a0f84205a83c/twilight-model/src/channel/mod.rs#L57)',
+  members: '1000-ish [members](https://github.com/twilight-rs/twilight/blob/bb8f8f41251e99f4475f5a6757e5a0f84205a83c/twilight-model/src/guild/member.rs#L16)',
+  roles: '2500-ish [roles](https://github.com/twilight-rs/twilight/blob/bb8f8f41251e99f4475f5a6757e5a0f84205a83c/twilight-model/src/guild/role.rs#L11)'
 }
 
 function format(input) {
@@ -200,7 +200,6 @@ function format(input) {
     let frameworks = results[dataset]
 
     let serdeTables = buildTables(results, dataset, ['serialize', 'deserialize', 'size', 'zlib', 'zstd'], '†')
-    let zcdTables = buildTables(results, dataset, ['access', 'read', 'update'], '‡')
 
     tables += `\
 ## \`${dataset}\`
@@ -216,11 +215,6 @@ For operations, time per iteration; for size, bytes. Lower is better.
 ${serdeTables.header}
 ${serdeTables.data}
 
-#### Zero-copy deserialization speed
-
-${zcdTables.header}
-${zcdTables.data}
-
 ### Comparison
 
 Relative to best. Higher is better.
@@ -229,11 +223,6 @@ Relative to best. Higher is better.
 
 ${serdeTables.header}
 ${serdeTables.comparison}
-
-#### Zero-copy deserialization speed
-
-${zcdTables.header}
-${zcdTables.comparison}
 
 `
   }

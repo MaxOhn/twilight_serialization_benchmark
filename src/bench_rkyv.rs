@@ -1,9 +1,7 @@
-use core::pin::Pin;
-
 use bytecheck::CheckBytes;
 use criterion::{black_box, Criterion};
 use rkyv::{
-    archived_value, archived_value_mut, check_archived_value,
+    archived_value, check_archived_value,
     ser::{
         serializers::{AlignedSerializer, BufferScratch, CompositeSerializer},
         Serializer,
@@ -18,13 +16,11 @@ pub type BenchSerializer<'a> = CompositeSerializer<
     Infallible,
 >;
 
-pub fn bench<T, R, U>(name: &'static str, c: &mut Criterion, data: &T, read: R, update: U)
+pub fn bench<T>(name: &'static str, c: &mut Criterion, data: &T)
 where
     T: Archive + for<'a> Serialize<BenchSerializer<'a>>,
     T::Archived: Deserialize<T, Infallible>,
     T::Archived: for<'a> CheckBytes<DefaultValidator<'a>>,
-    R: Fn(&T::Archived),
-    U: Fn(Pin<&mut T::Archived>),
 {
     const BUFFER_LEN: usize = 10_000_000;
     const SCRATCH_LEN: usize = 512_000;
@@ -64,51 +60,6 @@ where
             black_box(unsafe {
                 archived_value::<T>(black_box(deserialize_buffer.as_ref()), black_box(pos))
             });
-        })
-    });
-
-    group.bench_function("access (validated upfront with error)", |b| {
-        b.iter(|| {
-            black_box(
-                check_archived_value::<T>(black_box(deserialize_buffer.as_ref()), black_box(pos))
-                    .unwrap(),
-            );
-        })
-    });
-
-    group.bench_function("read (unvalidated)", |b| {
-        b.iter(|| {
-            unsafe {
-                read(archived_value::<T>(
-                    black_box(deserialize_buffer.as_ref()),
-                    black_box(pos),
-                ))
-            };
-            black_box(());
-        })
-    });
-
-    group.bench_function("read (validated upfront with error)", |b| {
-        b.iter(|| {
-            read(
-                check_archived_value::<T>(black_box(deserialize_buffer.as_ref()), black_box(pos))
-                    .unwrap(),
-            );
-            black_box(());
-        })
-    });
-
-    let mut update_buffer = deserialize_buffer.clone();
-    group.bench_function("update", |b| {
-        b.iter(|| {
-            let mut value = unsafe {
-                archived_value_mut::<T>(
-                    black_box(Pin::new_unchecked(update_buffer.as_mut_slice())),
-                    black_box(pos),
-                )
-            };
-            update(value.as_mut());
-            black_box(value);
         })
     });
 
