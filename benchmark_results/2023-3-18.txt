@@ -3,326 +3,674 @@ running 0 tests
 
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
-twilight_guilds/borsh/serialize
-                        time:   [20.008 ms 20.777 ms 21.637 ms]
-                        change: [+26.449% +31.724% +37.210%] (p = 0.00 < 0.05)
+channels/borsh/serialize
+                        time:   [400.28 µs 404.70 µs 409.57 µs]
+                        change: [-0.7238% +5.1221% +10.468%] (p = 0.07 > 0.05)
+                        No change in performance detected.
+Found 11 outliers among 100 measurements (11.00%)
+  6 (6.00%) high mild
+  5 (5.00%) high severe
+channels/borsh/deserialize
+                        time:   [565.67 µs 580.45 µs 598.00 µs]
+                        change: [-0.3760% +1.4395% +3.2790%] (p = 0.13 > 0.05)
+                        No change in performance detected.
+Found 9 outliers among 100 measurements (9.00%)
+  4 (4.00%) high mild
+  5 (5.00%) high severe
+channels/borsh/size 194537
+channels/borsh/zlib 155969
+channels/borsh/zstd 148081
+
+channels/cbor/serialize time:   [1.6507 ms 1.6627 ms 1.6753 ms]
+                        change: [+2.4610% +4.0875% +5.7580%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+Found 7 outliers among 100 measurements (7.00%)
+  6 (6.00%) high mild
+  1 (1.00%) high severe
+channels/cbor/deserialize
+                        time:   [2.0797 ms 2.1005 ms 2.1235 ms]
+                        change: [+1.3879% +2.5356% +3.6933%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+Found 9 outliers among 100 measurements (9.00%)
+  5 (5.00%) high mild
+  4 (4.00%) high severe
+channels/cbor/size 472208
+channels/cbor/zlib 213341
+channels/cbor/zstd 191095
+
+channels/rkyv/serialize time:   [184.75 µs 186.20 µs 187.76 µs]
+                        change: [+0.7705% +2.0781% +3.2389%] (p = 0.00 < 0.05)
+                        Change within noise threshold.
+Found 5 outliers among 100 measurements (5.00%)
+  4 (4.00%) high mild
+  1 (1.00%) high severe
+channels/rkyv/access (unvalidated)
+                        time:   [1.1243 ns 1.1376 ns 1.1537 ns]
+                        change: [+1.2748% +2.5082% +3.6133%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+Found 7 outliers among 100 measurements (7.00%)
+  5 (5.00%) high mild
+  2 (2.00%) high severe
+channels/rkyv/deserialize (unvalidated)
+                        time:   [297.49 µs 301.28 µs 305.58 µs]
+                        change: [+1.0355% +1.9654% +2.9113%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+Found 7 outliers among 100 measurements (7.00%)
+  6 (6.00%) high mild
+  1 (1.00%) high severe
+channels/rkyv/deserialize (validated upfront with error)
+                        time:   [522.89 µs 527.11 µs 531.94 µs]
+                        change: [-1.8141% +1.6607% +5.4046%] (p = 0.41 > 0.05)
+                        No change in performance detected.
+Found 8 outliers among 100 measurements (8.00%)
+  6 (6.00%) high mild
+  2 (2.00%) high severe
+channels/rkyv/size 799160
+channels/rkyv/zlib 181549
+channels/rkyv/zstd 171739
+
+channels/scale/serialize
+                        time:   [396.04 µs 407.25 µs 419.89 µs]
+                        change: [+1.0317% +3.4150% +5.7845%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+Found 2 outliers among 100 measurements (2.00%)
+  2 (2.00%) high severe
+channels/scale/deserialize
+                        time:   [681.20 µs 702.86 µs 732.87 µs]
+                        change: [+10.986% +13.294% +16.256%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+Found 10 outliers among 100 measurements (10.00%)
+  1 (1.00%) low mild
+  3 (3.00%) high mild
+  6 (6.00%) high severe
+channels/scale/size 185404
+channels/scale/zlib 153020
+channels/scale/zstd 146289
+
+channels/serde_json/serialize
+                        time:   [2.8169 ms 2.8789 ms 2.9495 ms]
+                        change: [+4.9776% +8.4464% +11.575%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+Found 7 outliers among 100 measurements (7.00%)
+  4 (4.00%) high mild
+  3 (3.00%) high severe
+channels/serde_json/deserialize
+                        time:   [3.3729 ms 3.4340 ms 3.5003 ms]
+                        change: [+9.6261% +11.739% +13.963%] (p = 0.00 < 0.05)
                         Performance has regressed.
 Found 12 outliers among 100 measurements (12.00%)
   8 (8.00%) high mild
   4 (4.00%) high severe
-twilight_guilds/borsh/deserialize
-                        time:   [44.935 ms 46.699 ms 48.778 ms]
-                        change: [+20.844% +26.725% +32.463%] (p = 0.00 < 0.05)
-                        Performance has regressed.
-Found 15 outliers among 100 measurements (15.00%)
-  10 (10.00%) high mild
-  5 (5.00%) high severe
-twilight_guilds/borsh/size 9381118
-twilight_guilds/borsh/zlib 7601483
-twilight_guilds/borsh/zstd 7242385
+channels/serde_json/size 590964
+channels/serde_json/zlib 237502
+channels/serde_json/zstd 192566
 
-twilight_guilds/cbor/serialize
-                        time:   [78.220 ms 83.204 ms 88.532 ms]
-                        change: [+36.518% +45.702% +56.088%] (p = 0.00 < 0.05)
-                        Performance has regressed.
-Found 4 outliers among 100 measurements (4.00%)
-  4 (4.00%) high mild
-twilight_guilds/cbor/deserialize
-                        time:   [127.10 ms 136.22 ms 146.17 ms]
-                        change: [+37.718% +46.263% +56.948%] (p = 0.00 < 0.05)
-                        Performance has regressed.
-Found 14 outliers among 100 measurements (14.00%)
-  8 (8.00%) high mild
-  6 (6.00%) high severe
-twilight_guilds/cbor/size 17368023
-twilight_guilds/cbor/zlib 9296893
-twilight_guilds/cbor/zstd 8531824
-
-twilight_guilds/rkyv/serialize
-                        time:   [14.330 ms 14.559 ms 14.839 ms]
-                        change: [+9.7971% +11.560% +13.816%] (p = 0.00 < 0.05)
-                        Performance has regressed.
-Found 8 outliers among 100 measurements (8.00%)
-  4 (4.00%) high mild
-  4 (4.00%) high severe
-twilight_guilds/rkyv/access (unvalidated)
-                        time:   [1.1947 ns 1.2265 ns 1.2688 ns]
-                        change: [+10.330% +13.683% +16.918%] (p = 0.00 < 0.05)
-                        Performance has regressed.
-Found 8 outliers among 100 measurements (8.00%)
-  4 (4.00%) high mild
-  4 (4.00%) high severe
-twilight_guilds/rkyv/access (validated upfront with error)
-                        time:   [14.848 ms 15.113 ms 15.477 ms]
-Found 7 outliers among 100 measurements (7.00%)
-  5 (5.00%) high mild
-  2 (2.00%) high severe
-twilight_guilds/rkyv/read (unvalidated)
-                        time:   [12.466 ns 12.530 ns 12.599 ns]
-                        change: [-3.7291% -2.9159% -2.1160%] (p = 0.00 < 0.05)
-                        Performance has improved.
-Found 2 outliers among 100 measurements (2.00%)
-  2 (2.00%) high mild
-twilight_guilds/rkyv/read (validated upfront with error)
-                        time:   [14.904 ms 15.018 ms 15.148 ms]
-Found 6 outliers among 100 measurements (6.00%)
-  3 (3.00%) high mild
-  3 (3.00%) high severe
-twilight_guilds/rkyv/update
-                        time:   [21.213 ns 21.324 ns 21.438 ns]
-                        change: [+34.033% +35.410% +37.140%] (p = 0.00 < 0.05)
-                        Performance has regressed.
-Found 6 outliers among 100 measurements (6.00%)
-  1 (1.00%) low mild
-  2 (2.00%) high mild
-  3 (3.00%) high severe
-twilight_guilds/rkyv/deserialize (unvalidated)
-                        time:   [28.929 ms 29.279 ms 29.727 ms]
-                        change: [+1.3612% +4.2730% +6.6785%] (p = 0.00 < 0.05)
+channels/simd-json/serialize
+                        time:   [2.6736 ms 2.7367 ms 2.8051 ms]
+                        change: [+12.100% +14.883% +17.730%] (p = 0.00 < 0.05)
                         Performance has regressed.
 Found 5 outliers among 100 measurements (5.00%)
   3 (3.00%) high mild
   2 (2.00%) high severe
-twilight_guilds/rkyv/deserialize (validated upfront with error)
-                        time:   [44.318 ms 44.667 ms 45.046 ms]
-Found 7 outliers among 100 measurements (7.00%)
-  1 (1.00%) high mild
-  6 (6.00%) high severe
-twilight_guilds/rkyv/size 20014144
-twilight_guilds/rkyv/zlib 9071737
-twilight_guilds/rkyv/zstd 8257809
+channels/simd-json/deserialize
+                        time:   [2.1753 ms 2.2112 ms 2.2501 ms]
+                        change: [+11.322% +13.141% +15.014%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+Found 6 outliers among 100 measurements (6.00%)
+  4 (4.00%) high mild
+  2 (2.00%) high severe
+channels/simd-json/size 590964
+channels/simd-json/zlib 237502
+channels/simd-json/zstd 192566
 
-twilight_guilds/scale/serialize
-                        time:   [17.423 ms 17.572 ms 17.747 ms]
-                        change: [-3.5865% -1.1751% +0.8410%] (p = 0.35 > 0.05)
+channels/speedy/serialize
+                        time:   [238.55 µs 244.32 µs 249.97 µs]
+                        change: [+6.2087% +9.0374% +11.709%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+Found 2 outliers among 100 measurements (2.00%)
+  2 (2.00%) high mild
+channels/speedy/deserialize
+                        time:   [473.95 µs 481.20 µs 489.78 µs]
+                        change: [+8.0391% +11.243% +15.336%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+Found 7 outliers among 100 measurements (7.00%)
+  3 (3.00%) high mild
+  4 (4.00%) high severe
+channels/speedy/size 194537
+channels/speedy/zlib 155969
+channels/speedy/zstd 148081
+
+members/borsh/serialize time:   [261.74 µs 267.85 µs 275.42 µs]
+                        change: [+6.1211% +8.6332% +12.243%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+Found 9 outliers among 100 measurements (9.00%)
+  3 (3.00%) high mild
+  6 (6.00%) high severe
+members/borsh/deserialize
+                        time:   [451.65 µs 467.24 µs 485.90 µs]
+                        change: [+12.803% +15.605% +19.121%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+Found 5 outliers among 100 measurements (5.00%)
+  3 (3.00%) high mild
+  2 (2.00%) high severe
+members/borsh/size 229770
+members/borsh/zlib 198582
+members/borsh/zstd 189898
+
+members/cbor/serialize  time:   [2.8502 ms 2.8936 ms 2.9405 ms]
+                        change: [+10.388% +12.212% +14.129%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+Found 3 outliers among 100 measurements (3.00%)
+  2 (2.00%) high mild
+  1 (1.00%) high severe
+members/cbor/deserialize
+                        time:   [2.2483 ms 2.2773 ms 2.3085 ms]
+                        change: [+6.3825% +7.8867% +9.4732%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+Found 6 outliers among 100 measurements (6.00%)
+  3 (3.00%) high mild
+  3 (3.00%) high severe
+members/cbor/size 565352
+members/cbor/zlib 263608
+members/cbor/zstd 239022
+
+members/rkyv/serialize  time:   [84.968 µs 86.851 µs 89.244 µs]
+                        change: [+5.7856% +8.2078% +11.065%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+Found 5 outliers among 100 measurements (5.00%)
+  3 (3.00%) high mild
+  2 (2.00%) high severe
+members/rkyv/access (unvalidated)
+                        time:   [1.2331 ns 1.2516 ns 1.2720 ns]
+                        change: [+3.1081% +5.1477% +7.2163%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+Found 8 outliers among 100 measurements (8.00%)
+  5 (5.00%) high mild
+  3 (3.00%) high severe
+members/rkyv/deserialize (unvalidated)
+                        time:   [232.96 µs 237.32 µs 242.16 µs]
+                        change: [+14.572% +19.088% +24.005%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+Found 8 outliers among 100 measurements (8.00%)
+  6 (6.00%) high mild
+  2 (2.00%) high severe
+members/rkyv/deserialize (validated upfront with error)
+                        time:   [372.57 µs 390.04 µs 412.07 µs]
+                        change: [+6.8062% +10.071% +13.662%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+Found 7 outliers among 100 measurements (7.00%)
+  4 (4.00%) high mild
+  3 (3.00%) high severe
+members/rkyv/size 360872
+members/rkyv/zlib 212922
+members/rkyv/zstd 201307
+
+members/scale/serialize time:   [271.52 µs 277.97 µs 285.56 µs]
+                        change: [+9.0237% +11.646% +14.451%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+Found 10 outliers among 100 measurements (10.00%)
+  7 (7.00%) high mild
+  3 (3.00%) high severe
+members/scale/deserialize
+                        time:   [480.81 µs 490.71 µs 502.62 µs]
+                        change: [+7.0560% +9.5460% +12.076%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+Found 8 outliers among 100 measurements (8.00%)
+  6 (6.00%) high mild
+  2 (2.00%) high severe
+members/scale/size 221764
+members/scale/zlib 195056
+members/scale/zstd 187815
+
+members/serde_json/serialize
+                        time:   [3.7998 ms 3.8721 ms 3.9540 ms]
+                        change: [+3.1154% +5.2388% +7.5206%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+Found 9 outliers among 100 measurements (9.00%)
+  3 (3.00%) high mild
+  6 (6.00%) high severe
+members/serde_json/deserialize
+                        time:   [3.3404 ms 3.3908 ms 3.4480 ms]
+                        change: [+1.9571% +3.5921% +5.5868%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+Found 8 outliers among 100 measurements (8.00%)
+  3 (3.00%) high mild
+  5 (5.00%) high severe
+members/serde_json/size 677676
+members/serde_json/zlib 277807
+members/serde_json/zstd 240628
+
+members/simd-json/serialize
+                        time:   [3.4186 ms 3.4712 ms 3.5322 ms]
+                        change: [+3.4991% +5.2402% +7.0874%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+Found 8 outliers among 100 measurements (8.00%)
+  6 (6.00%) high mild
+  2 (2.00%) high severe
+members/simd-json/deserialize
+                        time:   [2.0817 ms 2.1274 ms 2.1772 ms]
+                        change: [+5.9255% +8.3313% +10.554%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+Found 7 outliers among 100 measurements (7.00%)
+  6 (6.00%) high mild
+  1 (1.00%) high severe
+members/simd-json/size 677676
+members/simd-json/zlib 277807
+members/simd-json/zstd 240628
+
+members/speedy/serialize
+                        time:   [115.82 µs 119.15 µs 123.57 µs]
+                        change: [+15.189% +17.307% +19.762%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+Found 2 outliers among 100 measurements (2.00%)
+  1 (1.00%) high mild
+  1 (1.00%) high severe
+members/speedy/deserialize
+                        time:   [363.55 µs 375.33 µs 388.52 µs]
+                        change: [-13.183% -6.4677% +0.1727%] (p = 0.08 > 0.05)
+                        No change in performance detected.
+Found 7 outliers among 100 measurements (7.00%)
+  4 (4.00%) high mild
+  3 (3.00%) high severe
+members/speedy/size 229770
+members/speedy/zlib 198582
+members/speedy/zstd 189898
+
+roles/borsh/serialize   time:   [38.841 µs 39.538 µs 40.228 µs]
+                        change: [+3.1828% +5.9831% +8.8830%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+Found 4 outliers among 100 measurements (4.00%)
+  2 (2.00%) high mild
+  2 (2.00%) high severe
+roles/borsh/deserialize time:   [97.131 µs 99.143 µs 101.17 µs]
+                        change: [+7.2791% +9.7421% +12.633%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+Found 2 outliers among 100 measurements (2.00%)
+  1 (1.00%) high mild
+  1 (1.00%) high severe
+roles/borsh/size 28675
+roles/borsh/zlib 24148
+roles/borsh/zstd 22986
+
+roles/cbor/serialize    time:   [180.12 µs 185.71 µs 194.24 µs]
+                        change: [+4.7400% +7.0043% +9.6998%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+Found 3 outliers among 100 measurements (3.00%)
+  2 (2.00%) high mild
+  1 (1.00%) high severe
+roles/cbor/deserialize  time:   [308.81 µs 314.57 µs 320.72 µs]
+                        change: [+9.6222% +12.093% +15.259%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+Found 10 outliers among 100 measurements (10.00%)
+  5 (5.00%) high mild
+  5 (5.00%) high severe
+roles/cbor/size 74423
+roles/cbor/zlib 33198
+roles/cbor/zstd 30345
+
+roles/rkyv/serialize    time:   [11.965 µs 12.183 µs 12.424 µs]
+                        change: [+8.2792% +11.789% +15.481%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+Found 5 outliers among 100 measurements (5.00%)
+  3 (3.00%) high mild
+  2 (2.00%) high severe
+roles/rkyv/access (unvalidated)
+                        time:   [1.2837 ns 1.3528 ns 1.4347 ns]
+                        change: [-0.4107% +5.2704% +10.908%] (p = 0.06 > 0.05)
+                        No change in performance detected.
+Found 8 outliers among 100 measurements (8.00%)
+  4 (4.00%) high mild
+  4 (4.00%) high severe
+roles/rkyv/deserialize (unvalidated)
+                        time:   [44.008 µs 44.391 µs 44.809 µs]
+                        change: [-38.349% -33.769% -28.789%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 3 outliers among 100 measurements (3.00%)
+  2 (2.00%) high mild
+  1 (1.00%) high severe
+roles/rkyv/deserialize (validated upfront with error)
+                        time:   [81.997 µs 83.616 µs 85.375 µs]
+                        change: [-10.744% -7.5895% -4.1789%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 10 outliers among 100 measurements (10.00%)
+  6 (6.00%) high mild
+  4 (4.00%) high severe
+roles/rkyv/size 60000
+roles/rkyv/zlib 27476
+roles/rkyv/zstd 26260
+
+roles/scale/serialize   time:   [36.998 µs 37.654 µs 38.395 µs]
+                        change: [-20.591% -17.166% -13.808%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 8 outliers among 100 measurements (8.00%)
+  5 (5.00%) high mild
+  3 (3.00%) high severe
+roles/scale/deserialize time:   [95.235 µs 97.323 µs 99.721 µs]
+                        change: [-24.537% -20.913% -17.169%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 7 outliers among 100 measurements (7.00%)
+  4 (4.00%) high mild
+  3 (3.00%) high severe
+roles/scale/size 26423
+roles/scale/zlib 23508
+roles/scale/zstd 22734
+
+roles/serde_json/serialize
+                        time:   [324.94 µs 330.36 µs 336.36 µs]
+                        change: [-17.311% -13.920% -10.544%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 3 outliers among 100 measurements (3.00%)
+  2 (2.00%) high mild
+  1 (1.00%) high severe
+roles/serde_json/deserialize
+                        time:   [429.45 µs 436.74 µs 444.54 µs]
+                        change: [-11.111% -7.8491% -3.6442%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 6 outliers among 100 measurements (6.00%)
+  4 (4.00%) high mild
+  2 (2.00%) high severe
+roles/serde_json/size 104652
+roles/serde_json/zlib 37044
+roles/serde_json/zstd 30382
+
+roles/simd-json/serialize
+                        time:   [297.34 µs 301.93 µs 306.95 µs]
+                        change: [-11.115% -8.0437% -5.0087%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 7 outliers among 100 measurements (7.00%)
+  1 (1.00%) low mild
+  5 (5.00%) high mild
+  1 (1.00%) high severe
+roles/simd-json/deserialize
+                        time:   [278.46 µs 288.85 µs 302.71 µs]
+                        change: [-12.208% -8.3364% -3.9506%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 12 outliers among 100 measurements (12.00%)
+  7 (7.00%) high mild
+  5 (5.00%) high severe
+roles/simd-json/size 104652
+roles/simd-json/zlib 37044
+roles/simd-json/zstd 30382
+
+roles/speedy/serialize  time:   [10.083 µs 10.264 µs 10.460 µs]
+                        change: [-9.9126% -5.8597% -2.0291%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 11 outliers among 100 measurements (11.00%)
+  5 (5.00%) high mild
+  6 (6.00%) high severe
+roles/speedy/deserialize
+                        time:   [67.132 µs 68.129 µs 69.240 µs]
+                        change: [-16.969% -9.6715% -3.1099%] (p = 0.01 < 0.05)
+                        Performance has improved.
+Found 11 outliers among 100 measurements (11.00%)
+  7 (7.00%) high mild
+  4 (4.00%) high severe
+roles/speedy/size 28675
+roles/speedy/zlib 24148
+roles/speedy/zstd 22986
+
+guilds/borsh/serialize  time:   [18.519 ms 18.825 ms 19.178 ms]
+                        change: [-5.1490% -2.6980% +0.1333%] (p = 0.05 < 0.05)
+                        Change within noise threshold.
+Found 4 outliers among 100 measurements (4.00%)
+  3 (3.00%) high mild
+  1 (1.00%) high severe
+guilds/borsh/deserialize
+                        time:   [57.047 ms 57.921 ms 58.863 ms]
+                        change: [-12.670% -9.5722% -6.3686%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 6 outliers among 100 measurements (6.00%)
+  5 (5.00%) high mild
+  1 (1.00%) high severe
+guilds/borsh/size 9659272
+guilds/borsh/zlib 7830265
+guilds/borsh/zstd 7462689
+
+guilds/cbor/serialize   time:   [66.905 ms 67.808 ms 68.773 ms]
+                        change: [-5.7526% -2.5981% +0.2310%] (p = 0.10 > 0.05)
+                        No change in performance detected.
+Found 9 outliers among 100 measurements (9.00%)
+  9 (9.00%) high mild
+guilds/cbor/deserialize time:   [113.17 ms 114.46 ms 115.99 ms]
+                        change: [-7.0871% -5.1157% -3.0813%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 3 outliers among 100 measurements (3.00%)
+  2 (2.00%) high mild
+  1 (1.00%) high severe
+guilds/cbor/size 17901405
+guilds/cbor/zlib 9583586
+guilds/cbor/zstd 8791955
+
+guilds/rkyv/serialize   time:   [17.466 ms 18.077 ms 18.786 ms]
+                        change: [+2.4102% +7.1461% +12.377%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+Found 5 outliers among 100 measurements (5.00%)
+  3 (3.00%) high mild
+  2 (2.00%) high severe
+guilds/rkyv/access (unvalidated)
+                        time:   [1.2426 ns 1.2601 ns 1.2789 ns]
+                        change: [-10.148% -6.6798% -3.3160%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 3 outliers among 100 measurements (3.00%)
+  3 (3.00%) high mild
+guilds/rkyv/deserialize (unvalidated)
+                        time:   [32.592 ms 33.415 ms 34.294 ms]
+                        change: [-0.5946% +2.8073% +6.3574%] (p = 0.11 > 0.05)
+                        No change in performance detected.
+Found 6 outliers among 100 measurements (6.00%)
+  6 (6.00%) high mild
+guilds/rkyv/deserialize (validated upfront with error)
+                        time:   [49.114 ms 50.434 ms 51.943 ms]
+                        change: [-11.843% -7.8483% -3.7861%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 7 outliers among 100 measurements (7.00%)
+  3 (3.00%) high mild
+  4 (4.00%) high severe
+guilds/rkyv/size 20606264
+guilds/rkyv/zlib 9347965
+guilds/rkyv/zstd 8505628
+
+guilds/scale/serialize  time:   [19.349 ms 19.628 ms 19.956 ms]
+                        change: [-6.3233% -4.0824% -1.6119%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 5 outliers among 100 measurements (5.00%)
+  3 (3.00%) high mild
+  2 (2.00%) high severe
+guilds/scale/deserialize
+                        time:   [45.131 ms 46.108 ms 47.255 ms]
+                        change: [-6.7182% -3.3346% +0.3156%] (p = 0.06 > 0.05)
+                        No change in performance detected.
+Found 3 outliers among 100 measurements (3.00%)
+  2 (2.00%) high mild
+  1 (1.00%) high severe
+guilds/scale/size 8670942
+guilds/scale/zlib 7495629
+guilds/scale/zstd 7227599
+
+guilds/serde_json/serialize
+                        time:   [101.27 ms 103.15 ms 105.36 ms]
+                        change: [-5.5715% -2.8613% -0.2073%] (p = 0.04 < 0.05)
+                        Change within noise threshold.
+Found 4 outliers among 100 measurements (4.00%)
+  1 (1.00%) high mild
+  3 (3.00%) high severe
+guilds/serde_json/deserialize
+                        time:   [156.80 ms 159.45 ms 162.38 ms]
+                        change: [-6.3876% -3.6596% -0.7976%] (p = 0.01 < 0.05)
+                        Change within noise threshold.
+Found 4 outliers among 100 measurements (4.00%)
+  2 (2.00%) high mild
+  2 (2.00%) high severe
+guilds/serde_json/size 22283724
+guilds/serde_json/zlib 10238346
+guilds/serde_json/zstd 8763902
+
+guilds/simd-json/serialize
+                        time:   [93.984 ms 95.978 ms 98.394 ms]
+                        change: [-4.0744% -1.5154% +1.5167%] (p = 0.30 > 0.05)
                         No change in performance detected.
 Found 7 outliers among 100 measurements (7.00%)
   5 (5.00%) high mild
   2 (2.00%) high severe
-twilight_guilds/scale/deserialize
-                        time:   [39.594 ms 39.931 ms 40.444 ms]
-                        change: [+3.3725% +4.3068% +5.6665%] (p = 0.00 < 0.05)
-                        Performance has regressed.
-Found 2 outliers among 100 measurements (2.00%)
-  1 (1.00%) high mild
-  1 (1.00%) high severe
-twilight_guilds/scale/size 8419533
-twilight_guilds/scale/zlib 7276972
-twilight_guilds/scale/zstd 7017169
-
-twilight_guilds/serde_json/serialize
-                        time:   [91.587 ms 92.028 ms 92.492 ms]
-                        change: [+0.3736% +1.6891% +2.7716%] (p = 0.00 < 0.05)
-                        Change within noise threshold.
-Found 6 outliers among 100 measurements (6.00%)
-  5 (5.00%) high mild
-  1 (1.00%) high severe
-twilight_guilds/serde_json/deserialize
-                        time:   [144.28 ms 145.28 ms 146.57 ms]
-                        change: [+3.4639% +4.2672% +5.2282%] (p = 0.00 < 0.05)
-                        Performance has regressed.
+guilds/simd-json/deserialize
+                        time:   [107.45 ms 109.34 ms 111.43 ms]
+                        change: [-9.8385% -7.4408% -4.9687%] (p = 0.00 < 0.05)
+                        Performance has improved.
 Found 5 outliers among 100 measurements (5.00%)
   3 (3.00%) high mild
   2 (2.00%) high severe
-twilight_guilds/serde_json/size 21621290
-twilight_guilds/serde_json/zlib 9935332
-twilight_guilds/serde_json/zstd 8505343
+guilds/simd-json/size 22283724
+guilds/simd-json/zlib 10238346
+guilds/simd-json/zstd 8763902
 
-twilight_guilds/simd-json/serialize
-                        time:   [84.890 ms 85.384 ms 85.915 ms]
-                        change: [-0.2578% +1.3491% +2.5666%] (p = 0.05 < 0.05)
+guilds/speedy/serialize time:   [15.605 ms 15.905 ms 16.254 ms]
+                        change: [-7.0696% -3.9230% -0.7440%] (p = 0.02 < 0.05)
                         Change within noise threshold.
 Found 9 outliers among 100 measurements (9.00%)
   6 (6.00%) high mild
   3 (3.00%) high severe
-twilight_guilds/simd-json/deserialize
-                        time:   [96.753 ms 97.489 ms 98.320 ms]
-                        change: [-5.9233% -3.4073% -1.1892%] (p = 0.00 < 0.05)
+guilds/speedy/deserialize
+                        time:   [37.641 ms 38.092 ms 38.590 ms]
+                        change: [-5.7436% -3.5853% -1.4317%] (p = 0.00 < 0.05)
                         Performance has improved.
-Found 7 outliers among 100 measurements (7.00%)
+Found 8 outliers among 100 measurements (8.00%)
+  3 (3.00%) high mild
+  5 (5.00%) high severe
+guilds/speedy/size 9659272
+guilds/speedy/zlib 7830276
+guilds/speedy/zstd 7462731
+
+messages/borsh/serialize
+                        time:   [940.76 µs 973.05 µs 1.0086 ms]
+                        change: [-9.0604% -5.8870% -2.5273%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 8 outliers among 100 measurements (8.00%)
+  6 (6.00%) high mild
+  2 (2.00%) high severe
+messages/borsh/deserialize
+                        time:   [2.6971 ms 2.7497 ms 2.8068 ms]
+                        change: [-8.6913% -5.9581% -2.9590%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 6 outliers among 100 measurements (6.00%)
   5 (5.00%) high mild
-  2 (2.00%) high severe
-twilight_guilds/simd-json/size 21621290
-twilight_guilds/simd-json/zlib 9935332
-twilight_guilds/simd-json/zstd 8505343
-
-twilight_guilds/speedy/serialize
-                        time:   [14.523 ms 14.758 ms 15.031 ms]
-                        change: [-13.793% -9.8420% -6.0490%] (p = 0.00 < 0.05)
-                        Performance has improved.
-Found 10 outliers among 100 measurements (10.00%)
-  3 (3.00%) high mild
-  7 (7.00%) high severe
-twilight_guilds/speedy/deserialize
-                        time:   [34.953 ms 35.283 ms 35.813 ms]
-                        change: [-3.1234% -2.0757% -0.6974%] (p = 0.00 < 0.05)
-                        Change within noise threshold.
-Found 2 outliers among 100 measurements (2.00%)
-  1 (1.00%) high mild
   1 (1.00%) high severe
-twilight_guilds/speedy/size 9381118
-twilight_guilds/speedy/zlib 7601496
-twilight_guilds/speedy/zstd 7242429
+messages/borsh/size 675021
+messages/borsh/zlib 580780
+messages/borsh/zstd 571019
 
-twilight_messages/borsh/serialize
-                        time:   [859.29 µs 866.74 µs 875.50 µs]
-                        change: [-5.9050% -3.9603% -2.0866%] (p = 0.00 < 0.05)
+messages/cbor/serialize time:   [4.6850 ms 4.7447 ms 4.8073 ms]
+                        change: [-9.8553% -6.7471% -3.9581%] (p = 0.00 < 0.05)
                         Performance has improved.
-Found 7 outliers among 100 measurements (7.00%)
-  1 (1.00%) low mild
-  4 (4.00%) high mild
-  2 (2.00%) high severe
-twilight_messages/borsh/deserialize
-                        time:   [2.4454 ms 2.4831 ms 2.5379 ms]
-                        change: [+1.4764% +3.0731% +5.5762%] (p = 0.00 < 0.05)
-                        Performance has regressed.
-Found 4 outliers among 100 measurements (4.00%)
-  2 (2.00%) high mild
-  2 (2.00%) high severe
-twilight_messages/borsh/size 675021
-twilight_messages/borsh/zlib 580780
-twilight_messages/borsh/zstd 571019
-
-twilight_messages/cbor/serialize
-                        time:   [4.3774 ms 4.3974 ms 4.4186 ms]
-                        change: [-2.1601% -1.4540% -0.7340%] (p = 0.00 < 0.05)
-                        Change within noise threshold.
-Found 4 outliers among 100 measurements (4.00%)
+Found 3 outliers among 100 measurements (3.00%)
   3 (3.00%) high mild
-  1 (1.00%) high severe
-twilight_messages/cbor/deserialize
-                        time:   [7.5725 ms 7.6105 ms 7.6532 ms]
-                        change: [-2.4469% -1.7318% -0.9635%] (p = 0.00 < 0.05)
-                        Change within noise threshold.
-Found 5 outliers among 100 measurements (5.00%)
-  3 (3.00%) high mild
-  2 (2.00%) high severe
-twilight_messages/cbor/size 1241348
-twilight_messages/cbor/zlib 735550
-twilight_messages/cbor/zstd 685829
-
-twilight_messages/rkyv/serialize
-                        time:   [830.91 µs 841.45 µs 857.77 µs]
-                        change: [+3.1564% +5.2307% +7.2722%] (p = 0.00 < 0.05)
-                        Performance has regressed.
-Found 12 outliers among 100 measurements (12.00%)
-  1 (1.00%) low mild
-  5 (5.00%) high mild
-  6 (6.00%) high severe
-twilight_messages/rkyv/access (unvalidated)
-                        time:   [1.1641 ns 1.1787 ns 1.1998 ns]
-                        change: [-1.3665% +0.1366% +2.1525%] (p = 0.89 > 0.05)
+messages/cbor/deserialize
+                        time:   [8.5617 ms 8.8227 ms 9.1219 ms]
+                        change: [-0.6573% +3.2511% +7.0051%] (p = 0.09 > 0.05)
                         No change in performance detected.
-Found 11 outliers among 100 measurements (11.00%)
-  1 (1.00%) low mild
+Found 7 outliers among 100 measurements (7.00%)
+  6 (6.00%) high mild
+  1 (1.00%) high severe
+messages/cbor/size 1241348
+messages/cbor/zlib 735550
+messages/cbor/zstd 685829
+
+messages/rkyv/serialize time:   [958.07 µs 1.0052 ms 1.0673 ms]
+                        change: [-9.5260% -4.7849% +0.5602%] (p = 0.07 > 0.05)
+                        No change in performance detected.
+Found 10 outliers among 100 measurements (10.00%)
   6 (6.00%) high mild
   4 (4.00%) high severe
-twilight_messages/rkyv/access (validated upfront with error)
-                        time:   [719.17 µs 723.30 µs 727.50 µs]
-Found 6 outliers among 100 measurements (6.00%)
-  3 (3.00%) high mild
-  3 (3.00%) high severe
-twilight_messages/rkyv/read (unvalidated)
-                        time:   [157.70 ns 158.39 ns 159.13 ns]
-                        change: [-3.0730% -1.7682% -0.6840%] (p = 0.00 < 0.05)
-                        Change within noise threshold.
-Found 6 outliers among 100 measurements (6.00%)
-  2 (2.00%) low mild
-  4 (4.00%) high mild
-twilight_messages/rkyv/read (validated upfront with error)
-                        time:   [717.35 µs 720.23 µs 723.24 µs]
-Found 5 outliers among 100 measurements (5.00%)
-  1 (1.00%) low mild
-  4 (4.00%) high mild
-twilight_messages/rkyv/update
-                        time:   [302.61 ns 306.88 ns 314.92 ns]
-                        change: [-0.3989% +0.7832% +2.4149%] (p = 0.32 > 0.05)
-                        No change in performance detected.
-Found 10 outliers among 100 measurements (10.00%)
-  4 (4.00%) low mild
-  3 (3.00%) high mild
-  3 (3.00%) high severe
-twilight_messages/rkyv/deserialize (unvalidated)
-                        time:   [1.5119 ms 1.5209 ms 1.5304 ms]
-                        change: [-0.1148% +1.3267% +2.8229%] (p = 0.07 > 0.05)
+messages/rkyv/access (unvalidated)
+                        time:   [1.2342 ns 1.2527 ns 1.2777 ns]
+                        change: [-3.7202% +3.0588% +13.103%] (p = 0.61 > 0.05)
                         No change in performance detected.
 Found 7 outliers among 100 measurements (7.00%)
-  1 (1.00%) low severe
-  1 (1.00%) low mild
-  4 (4.00%) high mild
-  1 (1.00%) high severe
-twilight_messages/rkyv/deserialize (validated upfront with error)
-                        time:   [2.3247 ms 2.3381 ms 2.3523 ms]
-Found 8 outliers among 100 measurements (8.00%)
-  7 (7.00%) high mild
-  1 (1.00%) high severe
-twilight_messages/rkyv/size 1922120
-twilight_messages/rkyv/zlib 659333
-twilight_messages/rkyv/zstd 627781
-
-twilight_messages/scale/serialize
-                        time:   [893.70 µs 901.44 µs 912.72 µs]
-                        change: [+2.4607% +3.6000% +4.8631%] (p = 0.00 < 0.05)
-                        Performance has regressed.
-Found 7 outliers among 100 measurements (7.00%)
-  2 (2.00%) low mild
-  4 (4.00%) high mild
-  1 (1.00%) high severe
-twilight_messages/scale/deserialize
-                        time:   [2.4224 ms 2.4356 ms 2.4491 ms]
-                        change: [+4.0281% +4.7400% +5.5277%] (p = 0.00 < 0.05)
-                        Performance has regressed.
-twilight_messages/scale/size 623876
-twilight_messages/scale/zlib 562322
-twilight_messages/scale/zstd 555842
-
-twilight_messages/serde_json/serialize
-                        time:   [6.7665 ms 6.7935 ms 6.8210 ms]
-                        change: [-1.0253% +1.3634% +3.1862%] (p = 0.24 > 0.05)
-                        No change in performance detected.
-Found 1 outliers among 100 measurements (1.00%)
-  1 (1.00%) high mild
-twilight_messages/serde_json/deserialize
-                        time:   [10.217 ms 10.302 ms 10.402 ms]
-                        change: [+3.9623% +4.9229% +6.0426%] (p = 0.00 < 0.05)
-                        Performance has regressed.
-Found 6 outliers among 100 measurements (6.00%)
-  2 (2.00%) high mild
+  3 (3.00%) high mild
   4 (4.00%) high severe
-twilight_messages/serde_json/size 1504073
-twilight_messages/serde_json/zlib 787539
-twilight_messages/serde_json/zstd 686368
-
-twilight_messages/simd-json/serialize
-                        time:   [6.2981 ms 6.3311 ms 6.3658 ms]
-                        change: [-0.0952% +0.6174% +1.3498%] (p = 0.09 > 0.05)
+messages/rkyv/deserialize (unvalidated)
+                        time:   [1.7341 ms 1.7846 ms 1.8403 ms]
+                        change: [-1.4165% +1.9839% +5.6986%] (p = 0.29 > 0.05)
                         No change in performance detected.
-Found 7 outliers among 100 measurements (7.00%)
+Found 9 outliers among 100 measurements (9.00%)
   7 (7.00%) high mild
-twilight_messages/simd-json/deserialize
-                        time:   [5.8353 ms 5.8585 ms 5.8818 ms]
-                        change: [-0.7326% -0.1402% +0.4526%] (p = 0.65 > 0.05)
+  2 (2.00%) high severe
+messages/rkyv/deserialize (validated upfront with error)
+                        time:   [2.7580 ms 2.8240 ms 2.8933 ms]
+                        change: [-3.3646% +0.4899% +4.2313%] (p = 0.81 > 0.05)
                         No change in performance detected.
-twilight_messages/simd-json/size 1504073
-twilight_messages/simd-json/zlib 787539
-twilight_messages/simd-json/zstd 686368
+Found 3 outliers among 100 measurements (3.00%)
+  3 (3.00%) high mild
+messages/rkyv/size 1922120
+messages/rkyv/zlib 659305
+messages/rkyv/zstd 627630
 
-twilight_messages/speedy/serialize
-                        time:   [582.43 µs 600.03 µs 621.67 µs]
-                        change: [+1.5270% +5.4050% +9.1055%] (p = 0.00 < 0.05)
-                        Performance has regressed.
-Found 10 outliers among 100 measurements (10.00%)
-  1 (1.00%) low mild
+messages/scale/serialize
+                        time:   [1.0448 ms 1.0820 ms 1.1218 ms]
+                        change: [-2.3121% +1.3289% +5.2788%] (p = 0.49 > 0.05)
+                        No change in performance detected.
+Found 3 outliers among 100 measurements (3.00%)
+  3 (3.00%) high mild
+messages/scale/deserialize
+                        time:   [2.7490 ms 2.8080 ms 2.8725 ms]
+                        change: [+0.9314% +3.5807% +6.4856%] (p = 0.01 < 0.05)
+                        Change within noise threshold.
+Found 5 outliers among 100 measurements (5.00%)
   4 (4.00%) high mild
-  5 (5.00%) high severe
-twilight_messages/speedy/deserialize
-                        time:   [1.9841 ms 2.0163 ms 2.0535 ms]
-                        change: [-5.8168% -4.2499% -2.4491%] (p = 0.00 < 0.05)
-                        Performance has improved.
-Found 12 outliers among 100 measurements (12.00%)
+  1 (1.00%) high severe
+messages/scale/size 623876
+messages/scale/zlib 562322
+messages/scale/zstd 555842
+
+messages/serde_json/serialize
+                        time:   [7.1200 ms 7.2285 ms 7.3465 ms]
+                        change: [-6.2587% -3.4542% -0.9341%] (p = 0.01 < 0.05)
+                        Change within noise threshold.
+Found 3 outliers among 100 measurements (3.00%)
+  2 (2.00%) high mild
+  1 (1.00%) high severe
+messages/serde_json/deserialize
+                        time:   [10.863 ms 11.106 ms 11.370 ms]
+                        change: [+1.1427% +3.9093% +6.9744%] (p = 0.01 < 0.05)
+                        Performance has regressed.
+Found 9 outliers among 100 measurements (9.00%)
+  6 (6.00%) high mild
+  3 (3.00%) high severe
+messages/serde_json/size 1504073
+messages/serde_json/zlib 787539
+messages/serde_json/zstd 686368
+
+messages/simd-json/serialize
+                        time:   [6.9751 ms 7.0921 ms 7.2214 ms]
+                        change: [-1.9260% +0.4249% +3.0193%] (p = 0.73 > 0.05)
+                        No change in performance detected.
+Found 8 outliers among 100 measurements (8.00%)
   5 (5.00%) high mild
-  7 (7.00%) high severe
-twilight_messages/speedy/size 675021
-twilight_messages/speedy/zlib 580795
-twilight_messages/speedy/zstd 571039
+  3 (3.00%) high severe
+messages/simd-json/deserialize
+                        time:   [6.4214 ms 6.5365 ms 6.6617 ms]
+                        change: [-3.7550% -1.1301% +1.5665%] (p = 0.41 > 0.05)
+                        No change in performance detected.
+Found 4 outliers among 100 measurements (4.00%)
+  3 (3.00%) high mild
+  1 (1.00%) high severe
+messages/simd-json/size 1504073
+messages/simd-json/zlib 787539
+messages/simd-json/zstd 686368
+
+messages/speedy/serialize
+                        time:   [678.30 µs 696.69 µs 717.13 µs]
+                        change: [-3.8455% +0.4476% +4.6963%] (p = 0.84 > 0.05)
+                        No change in performance detected.
+Found 4 outliers among 100 measurements (4.00%)
+  4 (4.00%) high mild
+messages/speedy/deserialize
+                        time:   [2.3468 ms 2.4226 ms 2.5169 ms]
+                        change: [-3.5923% +0.3319% +4.8467%] (p = 0.89 > 0.05)
+                        No change in performance detected.
+Found 11 outliers among 100 measurements (11.00%)
+  9 (9.00%) high mild
+  2 (2.00%) high severe
+messages/speedy/size 675021
+messages/speedy/zlib 580795
+messages/speedy/zstd 571039
 

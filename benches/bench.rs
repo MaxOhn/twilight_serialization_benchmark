@@ -3,8 +3,11 @@ use std::iter;
 use criterion::{criterion_group, criterion_main, Criterion};
 use rand::{rngs::SmallRng, SeedableRng};
 use rust_serialization_benchmark::values::Values;
-use surprise_me::{Surprise, SurpriseFactor};
-use twilight_model::{channel::Message, guild::Guild};
+use surprise_me::{factors::VecSurprise, Surprise, SurpriseFactor};
+use twilight_model::{
+    channel::{message::MessageSurprise, Channel, Message},
+    guild::{Guild, Member, Role},
+};
 
 #[allow(unused)]
 use criterion::black_box;
@@ -51,21 +54,21 @@ use rust_serialization_benchmark::bench_simd_json;
 use rust_serialization_benchmark::bench_speedy;
 
 macro_rules! bench_values {
-    ($name:literal, $ty:ident, $count:literal, $criterion:ident) => {{
+    ($name:literal, $ty:ident, $count:literal, $criterion:ident, $factor:expr $(, $mutate:expr)?) => {{
         // nothing up our sleeves, state and stream are first 10 digits of pi
         const STATE: u64 = 3141592653;
 
         let mut rng = SmallRng::seed_from_u64(STATE);
 
-        let data = {
-            let factor = SurpriseFactor::<$ty>::default();
+        #[allow(unused_mut)]
+        let mut values = iter::repeat_with(|| $ty::generate_with_factor(&mut rng, &$factor))
+            .take($count)
+            .collect();
 
-            let values = iter::repeat_with(|| $ty::generate_with_factor(&mut rng, &factor))
-                .take($count)
-                .collect();
+        #[allow(clippy::redundant_closure_call)]
+        $(($mutate)(&mut values);)?
 
-            Values { values }
-        };
+        let data = Values { values };
 
         #[cfg(feature = "borsh")]
         bench_borsh::bench($name, $criterion, &data);
@@ -90,17 +93,61 @@ macro_rules! bench_values {
     }};
 }
 
-fn bench_twilight_guilds(c: &mut Criterion) {
-    bench_values!("twilight_guilds", Guild, 23, c);
+fn bench_guilds(c: &mut Criterion) {
+    bench_values!("guilds", Guild, 24, c, SurpriseFactor::<Guild>::default());
 }
 
-fn bench_twilight_messages(c: &mut Criterion) {
-    bench_values!("twilight_messages", Message, 500, c);
+fn bench_messages(c: &mut Criterion) {
+    bench_values!(
+        "messages",
+        Message,
+        500,
+        c,
+        MessageSurprise {
+            components: VecSurprise {
+                max_len: 0,
+                ..Default::default()
+            },
+            ..Default::default()
+        },
+        |msgs: &mut Vec<Message>| msgs.iter_mut().for_each(|msg| {
+            if let Some(ref mut msg) = msg.referenced_message {
+                msg.components.clear();
+            }
+        })
+    );
+}
+
+fn bench_channels(c: &mut Criterion) {
+    bench_values!(
+        "channels",
+        Channel,
+        750,
+        c,
+        SurpriseFactor::<Channel>::default()
+    );
+}
+
+fn bench_members(c: &mut Criterion) {
+    bench_values!(
+        "members",
+        Member,
+        1000,
+        c,
+        SurpriseFactor::<Member>::default()
+    );
+}
+
+fn bench_roles(c: &mut Criterion) {
+    bench_values!("roles", Role, 500, c, SurpriseFactor::<Role>::default());
 }
 
 pub fn criterion_benchmark(c: &mut Criterion) {
-    bench_twilight_guilds(c);
-    bench_twilight_messages(c);
+    bench_channels(c);
+    bench_members(c);
+    bench_roles(c);
+    bench_guilds(c);
+    bench_messages(c);
 }
 
 criterion_group!(benches, criterion_benchmark);
